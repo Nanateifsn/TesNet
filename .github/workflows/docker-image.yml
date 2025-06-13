@@ -14,7 +14,5 @@ jobs:
           cd kuzco-installer-docker/kuzco-main
           docker compose up -d --build
 
-      - name: Show last 100 logs
-        run: |
-          cd kuzco-installer-docker/kuzco-main
-          docker compose logs --tail 100
+      - name: Wait for containers (6jam)
+        run: sleep 21600
