@@ -14,7 +14,7 @@ jobs:
           cd kuzco-installer-docker/kuzco-main
           docker compose up -d --build
 
-        - name: Show last 100 logs
+      - name: Show last 100 logs
         run: |
           cd kuzco-installer-docker/kuzco-main
           docker compose logs --tail 100
