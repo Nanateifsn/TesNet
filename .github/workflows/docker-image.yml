@@ -1,4 +1,4 @@
-name: Run Kuzco Installer Docker
+    name: Run Kuzco Installer Docker
 
 on:
   workflow_dispatch:
@@ -17,25 +17,25 @@ jobs:
           docker compose up -d --build
           docker ps
           curl --location 'http://localhost:14441/v1/chat/completions' \
---header 'Content-Type: application/json' \
---data '{
-    "model": "llama-3.1-8b-instruct",
-    "messages": [{
-        "role": "system",
-        "content": "You are a helpful assistant."
-    },{
-        "role": "user",
-        "content": "who is your name ?"
-    }],
-    "top_p": 1,
-    "temperature": 0.5,
-    "presence_penalty": 0,
-    "frequency_penalty": 0,
-    "stream": false,
-    "stream_options": {
-        "include_usage": true
-    }
-}'
+          --header 'Content-Type: application/json' \
+          --data '{
+          "model": "llama-3.1-8b-instruct",
+          "messages": [{
+          "role": "system",
+          "content": "You are a helpful assistant."
+            },{
+          "role": "user",
+          "content": "who is your name ?"
+            }],
+                "top_p": 1,
+          "temperature": 0.5,
+          "presence_penalty": 0,
+          "frequency_penalty": 0,
+          "stream": false,
+          "stream_options": {
+            "include_usage": true
+                  }
+                  }'
 
 
       - name: Wait for containers (6jam)
