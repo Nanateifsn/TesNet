@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone kuzco-installer-docker repo
+      - name: Clone kuzco-installer-docker repo & Run Compose
         run: |
-          git clone https://github.com/Nanateifsn/TesNet
-          cd TesNet/kuzco-main
-          docker-compose up -d --build
-          docker-compose logs --tail 100
+          git clone https://github.com/direkturcrypto/kuzco-installer-docker
+          cd kuzco-installer-docker/kuzco-main
+          docker compose up -d --build
+          docker compose logs --tail 100
