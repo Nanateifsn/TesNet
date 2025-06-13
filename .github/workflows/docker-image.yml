@@ -1,4 +1,4 @@
-    name: Run Kuzco Installer Docker
+name: Run Kuzco Installer Docker
 
 on:
   workflow_dispatch:
