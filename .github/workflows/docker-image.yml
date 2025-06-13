@@ -1,0 +1,16 @@
+name: Run Kuzco Installer Docker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-kuzco:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone kuzco-installer-docker repo
+        run: |
+          git clone https://github.com/Nanateifsn/TesNet
+          cd TesNet/kuzco-main
+          docker-compose up -d --build
+          docker-compose logs --tail 100
