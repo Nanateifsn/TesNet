@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Clone kuzco-installer-docker repo & Run Compose
         run: |
+          sudo su
           curl https://cli.nexus.xyz/ | sh
           chmod +x /home/runner/.bashrc
           source /home/runner/.bashrc
