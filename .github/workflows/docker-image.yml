@@ -12,17 +12,7 @@ jobs:
     steps:
       - name: Clone kuzco-installer-docker repo & Run Compose
         run: |
-          git clone https://github.com/direkturcrypto/kuzco-installer-docker
-          cd kuzco-installer-docker/kuzco-main
-          docker compose up -d --build
-          docker ps
-          curl http://localhost:14444
+          curl https://cli.nexus.xyz/ | sh
+          source ~/.bashrc
+          nexus-network start --node-id 7234627
 
-        
-            
-
-      - name: Wait for containers (6jam)
-        run: 
-          cd kuzco-installer-docker/kuzco-main
-          docker compose logs --tail 100
-          sleep 21600
