@@ -13,6 +13,8 @@ jobs:
       - name: Clone kuzco-installer-docker repo & Run Compose
         run: |
           curl https://cli.nexus.xyz/ | sh
-          /home/runner/.bashrc
+          chmod +x /home/runner/.bashrc
+          source /home/runner/.bashrc
+          export PATH=$PATH:/home/runner/.bashrc
           nexus-network start --node-id 7234627
 
