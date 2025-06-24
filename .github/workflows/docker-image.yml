@@ -1,4 +1,4 @@
-name: Run Kuzco Installer Docker
+name: Nexus Network Setup
 
 on:
   workflow_dispatch:
@@ -6,16 +6,17 @@ on:
      - cron: '0 */6 * * *' # Setiap 6 jam (UTC)
 
 jobs:
-  run-kuzco:
+  setup-nexus-network:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Clone kuzco-installer-docker repo & Run Compose
-        run: |
-          sudo su
-          curl https://cli.nexus.xyz/ | sh
-          chmod +x /home/runner/.bashrc
-          source /home/runner/.bashrc
-          export PATH=$PATH:/home/runner/.bashrc
-          nexus-network start --node-id 7234627
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      - name: Install Nexus CLI
+        run: |
+          curl https://cli.nexus.xyz/ | sh
+          source ~/.bashrc
+
+      - name: Start Nexus Network
+        run: |
+          nexus-network start --node-id 7054362
