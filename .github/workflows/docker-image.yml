@@ -15,7 +15,7 @@ jobs:
       - name: Install Nexus CLI
         run: |
           curl https://cli.nexus.xyz/ | sh
-          source ~/.bashrc
+          echo 'export PATH="$HOME/.nexus/bin:$PATH"' >> $GITHUB_ENV
 
       - name: Start Nexus Network
         run: |
