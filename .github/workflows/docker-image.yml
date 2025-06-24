@@ -23,6 +23,12 @@ jobs:
           cargo build --release
           echo "$GITHUB_WORKSPACE/nexus-cli/clients/cli/target/release" >> $GITHUB_PATH
 
+      - name: Cek network & device
+        run: |
+          ip addr
+          ifconfig || true
+          ls /dev
+          uname -a
       - name: Start Nexus Network
         run: |
           nexus-network start --node-id 7054362
