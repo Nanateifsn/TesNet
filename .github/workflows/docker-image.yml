@@ -2,8 +2,6 @@ name: Nexus Network Setup
 
 on:
   workflow_dispatch:
-    schedule:
-     - cron: '0 */6 * * *' # Setiap 6 jam (UTC)
 
 jobs:
   setup-nexus-network:
@@ -12,10 +10,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Nexus CLI
+      - name: Install Rust (for building Nexus CLI)
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Clone and Build Nexus CLI
         run: |
-          curl https://cli.nexus.xyz/ | sh
-          echo 'export PATH="$HOME/.nexus/bin:$PATH"' >> $GITHUB_ENV
+          git clone https://github.com/nexus-xyz/nexus-cli.git
+          cd nexus-cli/clients/cli
+          cargo build --release
+          echo "$GITHUB_WORKSPACE/nexus-cli/clients/cli/target/release" >> $GITHUB_PATH
 
       - name: Start Nexus Network
         run: |
